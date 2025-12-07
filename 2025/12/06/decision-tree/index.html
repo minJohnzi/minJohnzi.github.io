@@ -9,7 +9,7 @@
     <meta name="description" content="决策树自信息量： ​	设信源$$X$$ 发出$$a_i$$的概率为$$P(a_i)$$，在收到符号$$a_i$$的概率之前，收信者对$$a_i$$的不确定性定义为$$a_i$$的自信息量 $$I(a_i)&#x3D;-logP(a_i)$$。 ​	这个定义表明，对于小概率事件信息量大。即对于小概率发生的事件总让我们影响深刻。 信息熵： ​	自信息量只能反映符号的不确定性。信息熵用来度量整个信源整个">
 <meta property="og:type" content="article">
 <meta property="og:title" content="decision_tree.md">
-<meta property="og:url" content="https://minjohnzi.github.io/2025/12/06/decision-tree-md/index.html">
+<meta property="og:url" content="https://minjohnzi.github.io/2025/12/06/decision-tree/index.html">
 <meta property="og:site_name" content="Just Writing Something">
 <meta property="og:description" content="决策树自信息量： ​	设信源$$X$$ 发出$$a_i$$的概率为$$P(a_i)$$，在收到符号$$a_i$$的概率之前，收信者对$$a_i$$的不确定性定义为$$a_i$$的自信息量 $$I(a_i)&#x3D;-logP(a_i)$$。 ​	这个定义表明，对于小概率事件信息量大。即对于小概率发生的事件总让我们影响深刻。 信息熵： ​	自信息量只能反映符号的不确定性。信息熵用来度量整个信源整个">
 <meta property="og:locale" content="en_US">
@@ -105,17 +105,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://minjohnzi.github.io/2025/12/06/decision-tree-md/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&text=decision_tree.md"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&is_video=false&description=decision_tree.md"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=decision_tree.md&body=Check out this article: https://minjohnzi.github.io/2025/12/06/decision-tree-md/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&name=decision_tree.md&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&t=decision_tree.md"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://minjohnzi.github.io/2025/12/06/decision-tree/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://minjohnzi.github.io/2025/12/06/decision-tree/&text=decision_tree.md"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://minjohnzi.github.io/2025/12/06/decision-tree/&title=decision_tree.md"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://minjohnzi.github.io/2025/12/06/decision-tree/&is_video=false&description=decision_tree.md"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=decision_tree.md&body=Check out this article: https://minjohnzi.github.io/2025/12/06/decision-tree/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://minjohnzi.github.io/2025/12/06/decision-tree/&title=decision_tree.md"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree/&title=decision_tree.md"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree/&title=decision_tree.md"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree/&title=decision_tree.md"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://minjohnzi.github.io/2025/12/06/decision-tree/&name=decision_tree.md&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://minjohnzi.github.io/2025/12/06/decision-tree/&t=decision_tree.md"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -224,17 +224,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://minjohnzi.github.io/2025/12/06/decision-tree-md/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&text=decision_tree.md"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&is_video=false&description=decision_tree.md"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=decision_tree.md&body=Check out this article: https://minjohnzi.github.io/2025/12/06/decision-tree-md/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&name=decision_tree.md&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&t=decision_tree.md"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://minjohnzi.github.io/2025/12/06/decision-tree/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://minjohnzi.github.io/2025/12/06/decision-tree/&text=decision_tree.md"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://minjohnzi.github.io/2025/12/06/decision-tree/&title=decision_tree.md"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://minjohnzi.github.io/2025/12/06/decision-tree/&is_video=false&description=decision_tree.md"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=decision_tree.md&body=Check out this article: https://minjohnzi.github.io/2025/12/06/decision-tree/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://minjohnzi.github.io/2025/12/06/decision-tree/&title=decision_tree.md"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree/&title=decision_tree.md"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree/&title=decision_tree.md"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree/&title=decision_tree.md"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://minjohnzi.github.io/2025/12/06/decision-tree/&name=decision_tree.md&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://minjohnzi.github.io/2025/12/06/decision-tree/&t=decision_tree.md"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
