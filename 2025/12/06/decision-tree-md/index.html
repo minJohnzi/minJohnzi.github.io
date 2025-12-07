@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="决策树自信息量： ​	设信源$$X$$ 发出$$a_i$$的概率为$$P(a_i)$$，在收到符号$$a_i$$的概率之前，收信者对$$a_i$$的不确定性定义为$$a_i$$的自信息量 $$I(a_i)&#x3D;-logP(a_i)$$。 ​	这个定义表明，对于小概率事件信息量大。即对于小概率发生的事件总让我们影响深刻。 信息熵： ​	自信息量只能反映符号的不确定性。信息熵用来度量整个信源整个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="decision_tree.md">
+<meta property="og:url" content="https://minjohnzi.github.io/2025/12/06/decision-tree-md/index.html">
+<meta property="og:site_name" content="Just Writing Something">
+<meta property="og:description" content="决策树自信息量： ​	设信源$$X$$ 发出$$a_i$$的概率为$$P(a_i)$$，在收到符号$$a_i$$的概率之前，收信者对$$a_i$$的不确定性定义为$$a_i$$的自信息量 $$I(a_i)&#x3D;-logP(a_i)$$。 ​	这个定义表明，对于小概率事件信息量大。即对于小概率发生的事件总让我们影响深刻。 信息熵： ​	自信息量只能反映符号的不确定性。信息熵用来度量整个信源整个">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-12-06T11:54:13.000Z">
+<meta property="article:modified_time" content="2025-12-06T13:56:41.729Z">
+<meta property="article:author" content="mjmj">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>decision_tree.md</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/11/26/machine-learning-note/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://minjohnzi.github.io/2025/12/06/decision-tree-md/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&text=decision_tree.md"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&is_video=false&description=decision_tree.md"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=decision_tree.md&body=Check out this article: https://minjohnzi.github.io/2025/12/06/decision-tree-md/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&name=decision_tree.md&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&t=decision_tree.md"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text">决策树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%B3%E7%AD%96%E6%A0%91%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.1.</span> <span class="toc-text">决策树设计</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        decision_tree.md
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">mjmj</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-12-06T11:54:13.000Z" class="dt-published" itemprop="datePublished">2025-12-06</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><p><strong>自信息量：</strong></p>
+<p>​	设信源$$X$$ 发出$$a_i$$的概率为$$P(a_i)$$，在收到符号$$a_i$$的概率之前，收信者对$$a_i$$的不确定性定义为$$a_i$$的自信息量 $$I(a_i)&#x3D;-logP(a_i)$$。</p>
+<p>​	这个定义表明，对于小概率事件信息量大。即对于小概率发生的事件总让我们影响深刻。</p>
+<p><strong>信息熵：</strong></p>
+<p>​	自信息量只能反映符号的不确定性。信息熵用来度量整个信源整个的不确定性，定义为：<br>$$<br>\begin{align}<br>H(X) &amp;&#x3D; P(a_1)I(a_1) + P(a_2)I(a_2) + \cdots + P(a_r)I(a_r) \<br>&amp;&#x3D; - \sum_{i&#x3D;1}^{r} P(a_i) \log P(a_i)<br>\end{align}<br>$$</p>
+<blockquote>
+<ul>
+<li>$$r$$ 为信源$$X$$发出的所有可能得符号类型。</li>
+<li>信息熵反应了信源每发出一个符号所提供的平均信息量或无序度的一种度量</li>
+</ul>
+</blockquote>
+<p><strong>条件熵：</strong></p>
+<p>​	条件熵 $H(Y|X)$ 表示在已知随机变量 $X$ 的条件下，随机变量 $Y$ 的不确定性。</p>
+<p>$$H(X|Y)&#x3D;-\sum_{i&#x3D;1}^{r}\sum_{j&#x3D;1}^{s}P(a_ib_j)logP(a_i|b_j)$$</p>
+<blockquote>
+<p>条件熵是 $Y$ 在 $X$ 取特定值 $x$ 时的熵的数学期望（即加权平均）。</p>
+<p>展开后的计算公式（做题常用）：</p>
+<p>$$H(Y|X) &#x3D; - \sum_{x \in X} \sum_{y \in Y} P(x,y) \log P(y|x)$$</p>
+<ul>
+<li>$P(x)$：特征 $X$ 取某个值（如“晴天”）的概率。</li>
+<li>$H(Y|X&#x3D;x)$：在 $X&#x3D;x$（如“晴天”）这个条件下，目标 $Y$（如“是否去打球”）的熵。</li>
+</ul>
+</blockquote>
+<p><strong>平均互信息量：</strong></p>
+<p>​	通常用平均互信息量表示信号$Y$所能提供的关于$X$的信息量大小，用$I(X,Y)$表示，即</p>
+<p>$$ I(X,Y)&#x3D;H(X)-H(X|Y) $$</p>
+<blockquote>
+<p>信息增益是平均互信息量在决策树中的特殊称呼。</p>
+</blockquote>
+<h2 id="决策树设计"><a href="#决策树设计" class="headerlink" title="决策树设计"></a>决策树设计</h2>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%B3%E7%AD%96%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text">决策树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%B3%E7%AD%96%E6%A0%91%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.1.</span> <span class="toc-text">决策树设计</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://minjohnzi.github.io/2025/12/06/decision-tree-md/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&text=decision_tree.md"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&is_video=false&description=decision_tree.md"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=decision_tree.md&body=Check out this article: https://minjohnzi.github.io/2025/12/06/decision-tree-md/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&title=decision_tree.md"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&name=decision_tree.md&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://minjohnzi.github.io/2025/12/06/decision-tree-md/&t=decision_tree.md"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2025
+    mjmj
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
