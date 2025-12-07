@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="决策树自信息量： ​	设信源$$X$$ 发出$$a_i$$的概率为$$P(a_i)$$，在收到符号$$a_i$$的概率之前，收信者对$$a_i$$的不确定性定义为$$a_i$$的自信息量 $$I(a_i)&#x3D;-logP(a_i)$$。 ​	这个定义表明，对于小概率事件信息量大。即对于小概率发生的事件总让我们影响深刻。 信息熵： ​	自信息量只能反映符号的不确定性。信息熵用来度量整个信源整个">
+    <meta name="description" content="决策树自信息量： ​	设信源$X$ 发出$a_i$的概率为$P(a_i)$，在收到符号$a_i$的概率之前，收信者对$a_i$的不确定性定义为$a_i$的自信息量 $I(a_i)&#x3D;-logP(a_i)$。 ​	这个定义表明，对于小概率事件信息量大。即对于小概率发生的事件总让我们影响深刻。 信息熵： ​	自信息量只能反映符号的不确定性。信息熵用来度量整个信源整个的不确定性，定义为：$$\b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="decision_tree.md">
 <meta property="og:url" content="https://minjohnzi.github.io/2025/12/06/decision-tree/index.html">
 <meta property="og:site_name" content="Just Writing Something">
-<meta property="og:description" content="决策树自信息量： ​	设信源$$X$$ 发出$$a_i$$的概率为$$P(a_i)$$，在收到符号$$a_i$$的概率之前，收信者对$$a_i$$的不确定性定义为$$a_i$$的自信息量 $$I(a_i)&#x3D;-logP(a_i)$$。 ​	这个定义表明，对于小概率事件信息量大。即对于小概率发生的事件总让我们影响深刻。 信息熵： ​	自信息量只能反映符号的不确定性。信息熵用来度量整个信源整个">
+<meta property="og:description" content="决策树自信息量： ​	设信源$X$ 发出$a_i$的概率为$P(a_i)$，在收到符号$a_i$的概率之前，收信者对$a_i$的不确定性定义为$a_i$的自信息量 $I(a_i)&#x3D;-logP(a_i)$。 ​	这个定义表明，对于小概率事件信息量大。即对于小概率发生的事件总让我们影响深刻。 信息熵： ​	自信息量只能反映符号的不确定性。信息熵用来度量整个信源整个的不确定性，定义为：$$\b">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-12-06T11:54:13.000Z">
-<meta property="article:modified_time" content="2025-12-06T13:56:41.729Z">
+<meta property="article:modified_time" content="2025-12-07T13:46:27.988Z">
 <meta property="article:author" content="mjmj">
 <meta name="twitter:card" content="summary">
     
@@ -163,23 +163,23 @@
 
   <div class="content e-content" itemprop="articleBody">
     <h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><p><strong>自信息量：</strong></p>
-<p>​	设信源$$X$$ 发出$$a_i$$的概率为$$P(a_i)$$，在收到符号$$a_i$$的概率之前，收信者对$$a_i$$的不确定性定义为$$a_i$$的自信息量 $$I(a_i)&#x3D;-logP(a_i)$$。</p>
+<p>​	设信源$X$ 发出$a_i$的概率为$P(a_i)$，在收到符号$a_i$的概率之前，收信者对$a_i$的不确定性定义为$a_i$的自信息量 $I(a_i)&#x3D;-logP(a_i)$。</p>
 <p>​	这个定义表明，对于小概率事件信息量大。即对于小概率发生的事件总让我们影响深刻。</p>
 <p><strong>信息熵：</strong></p>
 <p>​	自信息量只能反映符号的不确定性。信息熵用来度量整个信源整个的不确定性，定义为：<br>$$<br>\begin{align}<br>H(X) &amp;&#x3D; P(a_1)I(a_1) + P(a_2)I(a_2) + \cdots + P(a_r)I(a_r) \<br>&amp;&#x3D; - \sum_{i&#x3D;1}^{r} P(a_i) \log P(a_i)<br>\end{align}<br>$$</p>
 <blockquote>
 <ul>
-<li>$$r$$ 为信源$$X$$发出的所有可能得符号类型。</li>
+<li>$r$ 为信源$X$发出的所有可能得符号类型。</li>
 <li>信息熵反应了信源每发出一个符号所提供的平均信息量或无序度的一种度量</li>
 </ul>
 </blockquote>
 <p><strong>条件熵：</strong></p>
 <p>​	条件熵 $H(Y|X)$ 表示在已知随机变量 $X$ 的条件下，随机变量 $Y$ 的不确定性。</p>
-<p>$$H(X|Y)&#x3D;-\sum_{i&#x3D;1}^{r}\sum_{j&#x3D;1}^{s}P(a_ib_j)logP(a_i|b_j)$$</p>
+<p>$$<br>H(X|Y)&#x3D;-\sum_{i&#x3D;1}^{r}\sum_{j&#x3D;1}^{s}P(a_ib_j)logP(a_i|b_j)<br>$$</p>
 <blockquote>
 <p>条件熵是 $Y$ 在 $X$ 取特定值 $x$ 时的熵的数学期望（即加权平均）。</p>
 <p>展开后的计算公式（做题常用）：</p>
-<p>$$H(Y|X) &#x3D; - \sum_{x \in X} \sum_{y \in Y} P(x,y) \log P(y|x)$$</p>
+<p>$H(Y|X) &#x3D; - \sum_{x \in X} \sum_{y \in Y} P(x,y) \log P(y|x)$</p>
 <ul>
 <li>$P(x)$：特征 $X$ 取某个值（如“晴天”）的概率。</li>
 <li>$H(Y|X&#x3D;x)$：在 $X&#x3D;x$（如“晴天”）这个条件下，目标 $Y$（如“是否去打球”）的熵。</li>
